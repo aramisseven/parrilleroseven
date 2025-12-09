@@ -1,273 +1,44 @@
-
+</html>
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora Básica</title>
-    <!-- Carga de Tailwind CSS para un diseño moderno y responsivo -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-    <style>
-        /* Estilos personalizados para la tipografía y el fondo */
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #e2e8f0; /* Color gris claro de fondo */
-        }
-        /* Estilo para el display de la calculadora */
-        #display {
-            background-color: #1f2937; /* Gris oscuro para el display */
-            min-height: 80px;
-            padding: 1rem;
-            text-align: right;
-            color: white;
-            font-size: 2.5rem; /* Tamaño de fuente grande */
-            font-weight: 800;
-            overflow-x: auto; /* Permite desplazamiento horizontal si el número es muy largo */
-            white-space: nowrap;
-        }
-        /* Estilo base para los botones */
-        .calc-btn {
-            height: 70px;
-            font-size: 1.5rem;
-            font-weight: 600;
-            transition: background-color 0.2s, transform 0.1s;
-        }
-        /* Efecto de presión */
-        .calc-btn:active {
-            transform: scale(0.95);
-        }
-        /* Estilos específicos para Operadores */
-        .operator-btn {
-            background-color: #f59e0b; /* Naranja para operadores */
-            color: white;
-        }
-        .operator-btn:hover {
-            background-color: #ea580c;
-        }
-        /* Estilos específicos para AC/Del */
-        .control-btn {
-            background-color: #6b7280; /* Gris medio para controles */
-            color: white;
-        }
-        .control-btn:hover {
-            background-color: #4b5563;
-        }
-        /* Estilo específico para el botón de Igual */
-        .equal-btn {
-            background-color: #10b981; /* Verde esmeralda */
-            color: white;
-        }
-        .equal-btn:hover {
-            background-color: #059669;
-        }
-    </style>
+    <title>virtual store</title>
+    <link rel="stylesheet" href="styles.css"> 
 </head>
-<body class="flex items-center justify-center min-h-screen p-4">
-
-    <!-- Contenedor Principal de la Calculadora -->
-    <div id="calculator-container" class="w-full max-w-sm bg-gray-50 shadow-2xl rounded-xl overflow-hidden">
-        
-        <!-- Display de la Calculadora -->
-        <div id="display" class="rounded-t-xl flex items-end justify-end">0</div>
-
-        <!-- Botones de la Calculadora (Grid) -->
-        <div class="grid grid-cols-4 gap-1 p-2">
-            
-            <!-- Fila 1 -->
-            <button class="calc-btn control-btn rounded-lg" onclick="clearDisplay('AC')">AC</button>
-            <button class="calc-btn control-btn rounded-lg" onclick="clearDisplay('DEL')">DEL</button>
-            <button class="calc-btn control-btn rounded-lg" onclick="appendOperator('%')">%</button>
-            <button class="calc-btn operator-btn rounded-lg" onclick="appendOperator('/')">/</button>
-
-            <!-- Fila 2 -->
-            <button class="calc-btn bg-gray-200 hover:bg-gray-300 rounded-lg" onclick="appendNumber('7')">7</button>
-            <button class="calc-btn bg-gray-200 hover:bg-gray-300 rounded-lg" onclick="appendNumber('8')">8</button>
-            <button class="calc-btn bg-gray-200 hover:bg-gray-300 rounded-lg" onclick="appendNumber('9')">9</button>
-            <button class="calc-btn operator-btn rounded-lg" onclick="appendOperator('*')">×</button>
-
-            <!-- Fila 3 -->
-            <button class="calc-btn bg-gray-200 hover:bg-gray-300 rounded-lg" onclick="appendNumber('4')">4</button>
-            <button class="calc-btn bg-gray-200 hover:bg-gray-300 rounded-lg" onclick="appendNumber('5')">5</button>
-            <button class="calc-btn bg-gray-200 hover:bg-gray-300 rounded-lg" onclick="appendNumber('6')">6</button>
-            <button class="calc-btn operator-btn rounded-lg" onclick="appendOperator('-')">-</button>
-
-            <!-- Fila 4 -->
-            <button class="calc-btn bg-gray-200 hover:bg-gray-300 rounded-lg" onclick="appendNumber('1')">1</button>
-            <button class="calc-btn bg-gray-200 hover:bg-gray-300 rounded-lg" onclick="appendNumber('2')">2</button>
-            <button class="calc-btn bg-gray-200 hover:bg-gray-300 rounded-lg" onclick="appendNumber('3')">3</button>
-            <button class="calc-btn operator-btn rounded-lg" onclick="appendOperator('+')">+</button>
-
-            <!-- Fila 5 -->
-            <button class="calc-btn bg-gray-200 hover:bg-gray-300 rounded-lg" onclick="appendNumber('0')">0</button>
-            <button class="calc-btn bg-gray-200 hover:bg-gray-300 rounded-lg" onclick="appendNumber('.')">.</button>
-            
-            <!-- Botón de Igual (ocupa dos columnas) -->
-            <button class="col-span-2 calc-btn equal-btn rounded-lg" onclick="calculateResult()">=</button>
+<body>
+    <header>
+        <h1>Mi Tienda online</h1>
+    </header>
+    
+    <main class="productos-container">
+        <div class="producto" id="producto1">
+            <img src="aceite.svg" alt="Descripción del Producto 1">
+            <h2>Producto Genial 1</h2>
+            <p>Un producto increíble que debes tener. ¡Solo $29.99!</p>
+            <button onclick="agregarAlCarrito('Producto Genial 1', 29.99)">Añadir al Carrito</button>
         </div>
-    </div>
 
-    <script>
-        // Variables para gestionar el estado de la calculadora
-        let currentInput = '0'; // La cadena que se muestra actualmente en el display
-        let previousOperand = ''; // Almacena el primer número para la operación
-        let operation = null; // Almacena el operador (+, -, *, /)
-        let waitingForSecondOperand = false; // Bandera para saber si ya se presionó un operador
+        <div class="producto" id="producto2">
+            <img src="rodajas.svg" alt="Descripción del Producto 2">
+            <h2>Producto Estelar 2</h2>
+            <p>La mejor opción para ti. ¡Precio especial de $49.50!</p>
+            <button onclick="agregarAlCarrito('Producto Estelar 2', 49.50)">Añadir al Carrito</button>
+        </div>
+    </main>
 
-        const displayElement = document.getElementById('display');
+    <aside id="carrito">
+        <h3>🛒 Carrito de Compras</h3>
+        <ul id="lista-carrito">
+            </ul>
+        <p>Total: $<span id="total-carrito">0.00</span></p>
+    </aside>
 
-        /**
-         * Actualiza el display de la calculadora en la interfaz.
-         */
-        function updateDisplay() {
-            displayElement.textContent = currentInput;
-        }
+    <footer>
+        <p>&copy; 2025 Mi Tienda derechos reservados 2025</p>
+    </footer>
 
-        /**
-         * Maneja la entrada de números y el punto decimal.
-         * @param {string} number - El número o punto a añadir.
-         */
-        function appendNumber(number) {
-            if (number === '.' && currentInput.includes('.')) {
-                return; // Evita múltiples puntos decimales
-            }
-            if (currentInput === '0' || waitingForSecondOperand) {
-                // Si estamos esperando el segundo operando o el display es '0',
-                // reemplazamos el contenido, a menos que el número sea un punto.
-                if (number === '.') {
-                    currentInput = '0.';
-                } else {
-                    currentInput = number;
-                }
-                waitingForSecondOperand = false;
-            } else {
-                // Si el input no es '0' y no estamos esperando el segundo operando, concatenamos.
-                currentInput += number;
-            }
-            updateDisplay();
-        }
-
-        /**
-         * Maneja la entrada de operadores (+, -, *, /, %).
-         * @param {string} nextOperation - El operador presionado.
-         */
-        function appendOperator(nextOperation) {
-            const inputValue = parseFloat(currentInput);
-
-            // Si ya hay una operación en curso y no hemos ingresado el segundo número,
-            // simplemente reemplazamos el operador.
-            if (operation && waitingForSecondOperand) {
-                operation = nextOperation;
-                // Reemplazamos el último carácter en el display para mostrar el nuevo operador (solo si es visible)
-                if (displayElement.textContent.length > 1) {
-                    displayElement.textContent = displayElement.textContent.slice(0, -1) + nextOperation;
-                }
-                return;
-            }
-
-            // Si previousOperand está vacío, es el primer número
-            if (previousOperand === '') {
-                previousOperand = inputValue;
-            } else if (operation) {
-                // Si ya hay una operación, calculamos el resultado parcial
-                const result = performCalculation(previousOperand, inputValue, operation);
-                
-                // Muestra el resultado parcial en el display
-                currentInput = String(result);
-                previousOperand = result;
-            }
-
-            waitingForSecondOperand = true;
-            operation = nextOperation;
-
-            // Para que la UI se vea bien, mostramos el operador
-            updateDisplay(); 
-        }
-
-        /**
-         * Realiza el cálculo basado en el operador actual.
-         * @param {number} num1 - Primer número.
-         * @param {number} num2 - Segundo número.
-         * @param {string} operator - El operador (+, -, *, /, %).
-         * @returns {number} El resultado del cálculo.
-         */
-        function performCalculation(num1, num2, operator) {
-            num1 = parseFloat(num1);
-            num2 = parseFloat(num2);
-
-            if (isNaN(num1) || isNaN(num2)) return num2;
-
-            switch (operator) {
-                case '+':
-                    return num1 + num2;
-                case '-':
-                    return num1 - num2;
-                case '*':
-                    return num1 * num2;
-                case '/':
-                    if (num2 === 0) {
-                        // Manejo de error de división por cero
-                        return 'Error';
-                    }
-                    return num1 / num2;
-                case '%':
-                    return num1 % num2;
-                default:
-                    return num2;
-            }
-        }
-
-        /**
-         * Finaliza el cálculo al presionar el botón '='.
-         */
-        function calculateResult() {
-            if (operation === null || waitingForSecondOperand) {
-                return;
-            }
-
-            const inputValue = parseFloat(currentInput);
-            
-            // Realiza la operación final
-            const result = performCalculation(previousOperand, inputValue, operation);
-            
-            // Si hay un error (división por cero)
-            if (result === 'Error') {
-                currentInput = 'Error';
-            } else {
-                // Muestra el resultado final
-                currentInput = String(result);
-            }
-
-            // Resetea el estado para la próxima operación
-            operation = null;
-            previousOperand = '';
-            waitingForSecondOperand = true;
-            
-            updateDisplay();
-        }
-
-        /**
-         * Limpia o borra el último dígito del display.
-         * @param {string} action - 'AC' para todo, 'DEL' para borrar último dígito.
-         */
-        function clearDisplay(action) {
-            if (action === 'AC') {
-                currentInput = '0';
-                previousOperand = '';
-                operation = null;
-                waitingForSecondOperand = false;
-            } else if (action === 'DEL') {
-                // Borra el último carácter
-                currentInput = currentInput.slice(0, -1);
-                if (currentInput === '' || currentInput === '-') {
-                    currentInput = '0';
-                }
-            }
-            updateDisplay();
-        }
-        
-        // Inicializa el display al cargar
-        updateDisplay();
-    </script>
+    <script src="script.js"></script> 
 </body>
 </html>
